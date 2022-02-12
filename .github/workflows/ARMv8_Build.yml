@@ -72,7 +72,7 @@ jobs:
       id: build
       run: |
         echo $PWD
-        sudo mkdir /opt/kernel
+        sudo mkdir /tmp/packit
         cd /opt/kernel
         chmod +x $GITHUB_WORKSPACE/$Get_Imgs_SH
         sudo $GITHUB_WORKSPACE/$Get_Imgs_SH
