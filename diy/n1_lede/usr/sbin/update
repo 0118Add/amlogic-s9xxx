@@ -1,0 +1,55 @@
+#/bin/bash
+
+TIME() {
+[[ -z "$1" ]] && {
+	echo -ne " "
+} || {
+     case $1 in
+	r) export Color="\e[31;1m";;
+	g) export Color="\e[32;1m";;
+	b) export Color="\e[34;1m";;
+	y) export Color="\e[33;0m";;
+	z) export Color="\e[35;1m";;
+	l) export Color="\e[36;1m";;
+      esac
+	[[ $# -lt 2 ]] && echo -e "\e[36m\e[0m ${1}" || {
+		echo -e "\e[36m\e[0m ${Color}${2}\e[0m"
+	 }
+      }
+}
+
+while :; do
+echo
+TIME g "---- N1固件 在线更新菜单 ----"
+echo
+TIME g "[1] 更新 gd772 编译的 N1固件"
+echo
+TIME g "[2] 更新  kiss 编译的 N1固件"
+echo
+TIME g "[0] 继续做 钉子户 退出更新!"
+TIME g "-------------------------------"
+read -p " 请输入 序号 敲回车确认： " CHOOSE
+case $CHOOSE in
+1)
+echo
+bash <(curl -Lso- https://pan.gd772.com/d/update/AutoUpdate.sh)
+break
+;;
+2)
+echo
+bash <(curl -Lso- https://tt.kisssik.ga/d/files/update-N1.sh)
+break
+;;
+0)
+echo
+TIME g "[0] 继续做 钉子户 退出本次更新"
+echo
+exit 0
+break
+;;
+*)
+echo
+TIME r "请输入正确的序号!"
+;;
+esac
+done
