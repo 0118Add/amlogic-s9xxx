@@ -12,7 +12,7 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/192.168.2.4/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
 
 #修改主机名为N1
 sed -i 's/OpenWrt/N1/g' package/base-files/files/bin/config_generate
@@ -50,11 +50,11 @@ echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 
 #ZeroTier
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/controller/*.lua
+#sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/controller/*.lua
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
+#sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/view/zerotier/*.htm
+#sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/view/zerotier/*.htm
 
 #wrtbwmon 实时流量监测
 
@@ -80,14 +80,11 @@ sed -i 's|https.*/OpenWrt|https://github.com/kissyouhunter/Openwrt_X86-Openwrt_N
 
 sed -i 's|ARMv8|openwrt_n1|g' ./feeds/amlogic/luci-app-amlogic/root/etc/config/amlogic
 
-sed -i 's|opt/kernel|https://github.com/kissyouhunter/kernel_N1/tree/main/kernel|g' ./feeds/amlogic/luci-app-amlogic/root/etc/config/amlogic
+sed -i 's|opt/kernel|https://github.com/0118Add/kernel_N1/tree/main/kernel|g' ./feeds/amlogic/luci-app-amlogic/root/etc/config/amlogic
 
 sed -i 's|500000|1000000|g' ./feeds/amlogic/luci-app-amlogic/root/etc/config/amlogic
 
 #store 商店
 
-sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app-store/luasrc/controller/*.lua
-
-#sed -i '21c #' ./package/lean/default-settings/files/zzz-default-settings
-#sed -i '22c #' ./package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app-store/luasrc/controller/*.lua
 
