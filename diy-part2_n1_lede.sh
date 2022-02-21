@@ -12,7 +12,7 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/192.168.2.4/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
 
 #修改主机名为N1
 sed -i 's/OpenWrt/N1/g' package/base-files/files/bin/config_generate
@@ -50,11 +50,11 @@ echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 
 #ZeroTier
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/controller/*.lua
+#sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/controller/*.lua
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
+#sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/model/cbi/zerotier/*.lua
 
-sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/view/zerotier/*.htm
+#sed -i 's/vpn/network/g' ./package/lean/luci-app-zerotier/luasrc/view/zerotier/*.htm
 
 #wrtbwmon 实时流量监测
 
@@ -86,5 +86,5 @@ sed -i 's|500000|1000000|g' ./feeds/amlogic/luci-app-amlogic/root/etc/config/aml
 
 #store 商店
 
-sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app-store/luasrc/controller/*.lua
+#sed -i 's/"admin", "store"/"admin", "services", "store"/g' ./feeds/kiss/luci-app-store/luasrc/controller/*.lua
 
