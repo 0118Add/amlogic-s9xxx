@@ -11,11 +11,11 @@ on:
       set_54x:
         description: "KERNEL: 5.4.x / none"
         required: false
-        default: "none"
+        default: "5.4.x"
       set_510x:
         description: "KERNEL: 5.10.x / none"
         required: false
-        default: "none"
+        default: "5.10.x"
       set_ver:
         description: "VER: 22.2.2 / ..."
         required: false
