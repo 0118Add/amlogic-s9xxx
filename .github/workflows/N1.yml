@@ -34,7 +34,7 @@ env:
   REPO_BRANCH: master
   F_REPO_URL: https://github.com/unifreq/openwrt_packit
   F_REPO_BRANCH: master
-  KERNEL_URL: https://github.com/kissyouhunter/kernel_N1/trunk/kernel
+  KERNEL_URL: https://github.com/0118Add/kernel_N1/tree/main/kernel
   FEEDS_CONF: lede.feeds.conf.default
   CONFIG_FILE: n1_lede.config
   DIY_P1_SH: diy-part1_n1_lede.sh
@@ -50,12 +50,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: telegrame_bot
-      run: |
-        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
-          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
-          您正在使用kissyouhunter仓库的lede_n1.config编译您自己的固件并打包,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
-        fi
+ 
 
     - name: choose kernel
       run: |
@@ -216,7 +211,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-kissyouhunter|'"$KERNEL_5_4_Y"-kissyouhunter'|g' ./make.env
+          sed -i 's|op-BGG|'"$KERNEL_5_4_Y"-BGG'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_4_Y
           mv $KERNEL_5_4_Y/* ./
@@ -230,7 +225,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-kissyouhunter|'"$KERNEL_5_10_Y"-kissyouhunter'|g' ./make.env
+          sed -i 's|op-BGG|'"$KERNEL_5_10_Y"-BGG'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_10_Y
           mv $KERNEL_5_10_Y/* ./
@@ -244,7 +239,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-kissyouhunter|'"$KERNEL_5_15_Y"-kissyouhunter'|g' ./make.env
+          sed -i 's|op-BGG|'"$KERNEL_5_15_Y"-BGG'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_15_Y
           mv $KERNEL_5_15_Y/* ./
@@ -258,7 +253,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-kissyouhunter|'"$KERNEL_5_16_Y"-kissyouhunter'|g' ./make.env
+          sed -i 's|op-BGG|'"$KERNEL_5_16_Y"-BGG'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_16_Y
           mv $KERNEL_5_16_Y/* ./
@@ -284,12 +279,5 @@ jobs:
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
       with:
-        retain_days: 1
+        retain_days: 5
         keep_minimum_runs: 3
-
-    - name: telegram_bot
-      run: |
-        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
-          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=我亲爱的✨主人✨：
-          您使用kissyouhunter仓库的lede_n1.config固件顺利编译完成了,并且打包完毕！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
-        fi
