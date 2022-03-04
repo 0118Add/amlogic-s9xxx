@@ -16,7 +16,7 @@ tmp_armbian=${make_path}/tmp_armbian
 tmp_build=${make_path}/tmp_build
 tmp_aml_image=${make_path}/tmp_aml_image
 
-kernel_library="https://github.com/0118Add/kernel_N1/tree/main/kernel"
+kernel_library="https://github.com/kissyouhunter/kernel_N1/tree/main/kernel"
 
 
     # Convert kernel library address to svn format
