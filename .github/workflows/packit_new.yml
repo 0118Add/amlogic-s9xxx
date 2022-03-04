@@ -32,8 +32,8 @@ on:
 env:
   REPO_URL: https://github.com/unifreq/openwrt_packit
   REPO_BRANCH: master
-  ROOTFS_URL: https://github.com/0118Add/Amlogic-s9xxx/releases/download/rootfs/openwrt-armvirt-64-default-rootfs.tar.gz
-  KERNEL_URL: https://github.com/0118Add/kernel_N1/tree/main/kernel
+  ROOTFS_URL: https://github.com/kissyouhunter/openwrt_N1/releases/download/rootfs/openwrt-armvirt-64-default-rootfs.tar.gz
+  KERNEL_URL: https://github.com/kissyouhunter/kernel_N1/trunk/kernel
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   SERVERCHAN_SCKEY: true
@@ -45,7 +45,12 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
- 
+    - name: telegrame_bot
+      run: |
+        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
+          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
+          您正在使用kissyouhunter仓库打包 N1 您自己的固件,请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+        fi
 
     - name: choose kernel
       run: |
@@ -121,7 +126,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-BGG|'"$KERNEL_5_4_Y"-BGG'|g' ./make.env
+          sed -i 's|op-kissyouhunter|'"$KERNEL_5_4_Y"-kissyouhunter'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_4_Y
           mv $KERNEL_5_4_Y/* ./
@@ -135,7 +140,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-BGG|'"$KERNEL_5_10_Y"-BGG'|g' ./make.env
+          sed -i 's|op-kissyouhunter|'"$KERNEL_5_10_Y"-kissyouhunter'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_10_Y
           mv $KERNEL_5_10_Y/* ./
@@ -149,7 +154,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-BGG|'"$KERNEL_5_15_Y"-BGG'|g' ./make.env
+          sed -i 's|op-kissyouhunter|'"$KERNEL_5_15_Y"-kissyouhunter'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_15_Y
           mv $KERNEL_5_15_Y/* ./
@@ -163,7 +168,7 @@ jobs:
           cd /tmp/packit
           rm -f make.env
           cp $GITHUB_WORKSPACE/make_kernel.env make.env -v
-          sed -i 's|op-BGG|'"$KERNEL_5_16_Y"-BGG'|g' ./make.env
+          sed -i 's|op-kissyouhunter|'"$KERNEL_5_16_Y"-kissyouhunter'|g' ./make.env
           sed -i 's|date|'"$OP_DATE"'|g' ./make.env
           svn co $KERNEL_URL/$KERNEL_5_16_Y
           mv $KERNEL_5_16_Y/* ./
@@ -191,3 +196,10 @@ jobs:
       with:
         retain_days: 1
         keep_minimum_runs: 3
+
+    - name: telegram_bot
+      run: |
+        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
+          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=我亲爱的✨主人✨：
+          您使用kissyouhunter仓库打包的 N1 固件顺利完成了！💐" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
+        fi
