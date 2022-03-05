@@ -11,19 +11,19 @@ on:
       set_54x:
         description: "KERNEL: 5.4.x / none"
         required: false
-        default: "none"
+        default: "5.4.x"
       set_510x:
         description: "KERNEL: 5.10.x / none"
         required: false
-        default: "none"
+        default: "5.10.x"
       set_515x:
         description: "KERNEL: 5.15.x / none"
         required: false
-        default: "none"
+        default: "5.15.x"
       set_516x:
         description: "KERNEL: 5.16.x / none"
         required: false
-        default: "none"
+        default: "5.16.x"
       set_ver:
         description: "VER: 22.2.2 / ..."
         required: false
@@ -32,7 +32,7 @@ on:
 env:
   REPO_URL: https://github.com/unifreq/openwrt_packit
   REPO_BRANCH: master
-  ROOTFS_URL: https://github.com/kissyouhunter/openwrt_N1/releases/download/rootfs/openwrt-armvirt-64-default-rootfs.tar.gz
+  ROOTFS_URL: https://github.com/0118Add/Actions-Shangyou/releases/download/ARMv8_Lede/openwrt-armvirt-64-default-rootfs.tar.gz
   KERNEL_URL: https://github.com/kissyouhunter/kernel_N1/trunk/kernel
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
